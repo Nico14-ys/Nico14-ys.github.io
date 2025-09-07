@@ -1,63 +1,35 @@
-/* -----------------------------
-   GENERAL BODY & BACKGROUND
---------------------------------*/
 body {
     margin: 0;
     width: 100vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
+    /* stack title, cake, screens */
+    align-items: center;
+    /* horizontally center */
     justify-content: flex-start;
     /* stick to top */
-    align-items: center;
-    overflow: hidden;
-    /* prevents scrolling */
-    padding-top: 20px;
-    /* optional spacing from top */
 }
+
 
 #pixel-bg {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
+    /* stretch to screen */
     height: 100vh;
     z-index: -1;
     image-rendering: pixelated;
+    /* makes stretching crisp */
 }
 
-/* -----------------------------
-   TITLE
---------------------------------*/
-.title h1 {
-    color: white;
-    transition: opacity 0.3s ease;
-    opacity: 1;
-    font-size: 4vw;
-    /* scales with viewport width */
-    text-align: center;
-    margin: 10px 0;
-}
 
-.title h1.fade-out {
-    opacity: 0;
-}
 
-/* -----------------------------
-   SCREENS / STEPS
---------------------------------*/
-.screen {
-    text-align: center;
-    margin: 10px;
-    width: 90vw;
-    max-width: 500px;
-}
-
-#customize-screen {
+#menu-screen #customize-screen {
     position: relative;
-    width: 90vw;
-    max-width: 500px;
-    height: auto;
+    width: 100%;
+    height: 30vh;
     margin: 0 auto;
     overflow: hidden;
 }
@@ -75,10 +47,13 @@ body {
     width: 100%;
     height: 100%;
     opacity: 0;
+    pointer-events: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    /* vertical center */
     align-items: center;
+    /* horizontal center */
     transition: transform 0.8s ease, opacity 0.4s ease;
 }
 
@@ -96,21 +71,13 @@ body {
     opacity: 0;
 }
 
-.options button {
-    margin: 5px;
-    font-size: 3vw;
-    /* scales on phone */
-    padding: 0.5em 1em;
-}
-
-/* -----------------------------
-   NES BUTTONS
---------------------------------*/
 .nes-btn.custom {
     color: #fff;
+    /* text color */
     position: relative;
     background: #8000ff;
     border-color: #6600cc;
+    /* base fill */
 }
 
 .nes-btn.custom:hover {
@@ -118,31 +85,66 @@ body {
     filter: brightness(0.9);
 }
 
-/* -----------------------------
-   CAKE WRAPPER
---------------------------------*/
+.hidden {
+    display: none;
+}
+
+.title {
+    height: 20vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* vertical center */
+    align-items: center;
+}
+
+.title h1 {
+    font-size: 5vh;
+    color: white;
+    transition: opacity 0.3s ease;
+    opacity: 1;
+}
+
+.title h1.fade-out {
+    opacity: 0;
+}
+
+h2 {
+    font-size: 2.5 vh;
+}
+
+
+.screen {
+    text-align: center;
+    margin: 20px;
+}
+
+.step {
+    margin: 20px;
+}
+
+.options button {
+    margin: 5px;
+}
+
 .cake-wrapper {
     position: relative;
-    width: 80vw;
-    /* scale with viewport width */
-    max-width: 500px;
-    /* never exceed original size */
-    height: auto;
-    /* maintain aspect ratio */
+    width: 50vh;
+    height: 50vh;
 }
 
-.cake-wrapper>div {
-    height: 0;
-    padding-bottom: 100%;
-    /* square aspect ratio */
+.plate {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-image: url("../assets/plate.png");
 }
 
-.plate,
-.cake-base,
-.cake-topping,
-.cake-topping-back,
-.candle-back,
-.candle-front {
+/* Base */
+.cake-base {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -150,16 +152,6 @@ body {
     background-position: center;
 }
 
-/* -----------------------------
-   PLATE
---------------------------------*/
-.plate {
-    background-image: url("../assets/plate.png");
-}
-
-/* -----------------------------
-   CAKE BASES
---------------------------------*/
 .cake-base.sponge {
     background-image: url("../assets/cake-base-sponge.png");
 }
@@ -180,9 +172,15 @@ body {
     background-image: url("../assets/cake-base-hamburger.png");
 }
 
-/* -----------------------------
-   TOPPINGS
---------------------------------*/
+/* Topping */
+.cake-topping {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
 .cake-topping.strawberries {
     background-image: url("../assets/topping-strawberries.png");
 }
@@ -199,16 +197,43 @@ body {
     background-image: url("../assets/topping-veggies-and-fruits.png");
 }
 
+
 .cake-topping.none {}
 
-/* Back toppings */
+.cake-topping-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
 .cake-topping-back.strawberries {
     background-image: url("../assets/topping-back-strawberries.png");
 }
 
-/* -----------------------------
-   CANDLES
---------------------------------*/
+
+
+/* … add 5 total */
+
+/* Candles */
+.candle-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.candle-front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Example candle states */
 .candle-back.blue {
     background-image: url("../assets/candles-blue-back.png");
 }
@@ -241,9 +266,6 @@ body {
     background-image: url("../assets/candles-rainbow-front.png");
 }
 
-/* -----------------------------
-   CONFETTI CANVAS
---------------------------------*/
 #confetti-canvas {
     position: fixed;
     top: 0;
@@ -251,23 +273,6 @@ body {
     width: 100%;
     height: 100%;
     pointer-events: none;
+    /* don't block clicks */
     z-index: 9999;
-}
-
-/* -----------------------------
-   MEDIA QUERIES FOR SMALL PHONES
---------------------------------*/
-@media (max-width: 600px) {
-    .cake-wrapper {
-        width: 70vmin;
-        height: 70vmin;
-    }
-
-    .title h1 {
-        font-size: 6vw;
-    }
-
-    .options button {
-        font-size: 4vw;
-    }
 }
