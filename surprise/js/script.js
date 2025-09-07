@@ -68,6 +68,8 @@ function resizeCanvas() {
 
 window.addEventListener("resize", resizeCanvas);
 
+
+
 // --- Setup ---
 function setupDOM() {
     // Cache cake layers
