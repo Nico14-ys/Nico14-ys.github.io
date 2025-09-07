@@ -9,6 +9,7 @@ body {
     /* horizontally center */
     justify-content: flex-start;
     /* stick to top */
+    font-size: 2.5 vh;
 }
 
 
@@ -62,12 +63,12 @@ body {
 }
 
 .step.exit-right {
-    transform: translateX(100%);
+    transform: translateX(100vw);
     opacity: 0;
 }
 
 .step.exit-left {
-    transform: translateX(-100%);
+    transform: translateX(-100vw);
     opacity: 0;
 }
 
@@ -100,7 +101,8 @@ body {
 }
 
 .title h1 {
-    font-size: 5vh;
+    text-align: center;
+    font-size: 3vh;
     color: white;
     transition: opacity 0.3s ease;
     opacity: 1;
@@ -130,8 +132,8 @@ h2 {
 
 .cake-wrapper {
     position: relative;
-    width: 50vh;
-    height: 50vh;
+    width: 45vh;
+    height: 45vh;
 }
 
 .plate {
