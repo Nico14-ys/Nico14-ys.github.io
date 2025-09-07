@@ -5,7 +5,7 @@ body {
     /* Pixelate it */
     /* image-rendering: pixelated; */
     /* Full viewport and centering */
-    /* background: url("surprise/assets/bg.jpg") no-repeat center center; */
+    /* background: url("../assets/bg.jpg") no-repeat center center; */
     /* background-size: cover; */
     /* scale to cover the whole screen */
     /* image-rendering: pixelated; */
@@ -132,7 +132,7 @@ body {
     height: 100%;
     background-size: cover;
     background-position: center;
-    background-image: url("surprise/assets/plate.PNG");
+    background-image: url("../assets/plate.PNG");
 }
 
 /* Base */
@@ -145,23 +145,23 @@ body {
 }
 
 .cake-base.sponge {
-    background-image: url("surprise/assets/cake-base-sponge.PNG");
+    background-image: url("../assets/cake-base-sponge.PNG");
 }
 
 .cake-base.chocolate {
-    background-image: url("surprise/assets/cake-base-chocolate.PNG");
+    background-image: url("../assets/cake-base-chocolate.PNG");
 }
 
 .cake-base.matcha {
-    background-image: url("surprise/assets/cake-base-matcha.PNG");
+    background-image: url("../assets/cake-base-matcha.PNG");
 }
 
 .cake-base.mooncake {
-    background-image: url("surprise/assets/cake-base-mooncake.PNG");
+    background-image: url("../assets/cake-base-mooncake.PNG");
 }
 
 .cake-base.hamburger {
-    background-image: url("surprise/assets/cake-base-hamburger.PNG");
+    background-image: url("../assets/cake-base-hamburger.PNG");
 }
 
 /* Topping */
@@ -174,19 +174,19 @@ body {
 }
 
 .cake-topping.strawberries {
-    background-image: url("surprise/assets/topping-strawberries.PNG");
+    background-image: url("../assets/topping-strawberries.PNG");
 }
 
 .cake-topping.blueberries {
-    background-image: url("surprise/assets/topping-blueberries.PNG");
+    background-image: url("../assets/topping-blueberries.PNG");
 }
 
 .cake-topping.octopus {
-    background-image: url("surprise/assets/topping-octopus.PNG");
+    background-image: url("../assets/topping-octopus.PNG");
 }
 
 .cake-topping.veggies-and-fruit {
-    background-image: url("surprise/assets/topping-veggies-and-fruits.PNG");
+    background-image: url("../assets/topping-veggies-and-fruits.PNG");
 }
 
 
@@ -201,7 +201,7 @@ body {
 }
 
 .cake-topping-back.strawberries {
-    background-image: url("surprise/assets/topping-back-strawberries.PNG");
+    background-image: url("../assets/topping-back-strawberries.PNG");
 }
 
 
@@ -227,35 +227,35 @@ body {
 
 /* Example candle states */
 .candle-back.blue {
-    background-image: url("surprise/assets/candles-blue-back.PNG");
+    background-image: url("../assets/candles-blue-back.PNG");
 }
 
 .candle-back.purple {
-    background-image: url("surprise/assets/candles-purple-back.PNG");
+    background-image: url("../assets/candles-purple-back.PNG");
 }
 
 .candle-back.gold {
-    background-image: url("surprise/assets/candles-gold-back.PNG");
+    background-image: url("../assets/candles-gold-back.PNG");
 }
 
 .candle-back.rainbow {
-    background-image: url("surprise/assets/candles-rainbow-back.PNG");
+    background-image: url("../assets/candles-rainbow-back.PNG");
 }
 
 .candle-front.blue {
-    background-image: url("surprise/assets/candles-blue-front.PNG");
+    background-image: url("../assets/candles-blue-front.PNG");
 }
 
 .candle-front.purple {
-    background-image: url("surprise/assets/candles-purple-front.PNG");
+    background-image: url("../assets/candles-purple-front.PNG");
 }
 
 .candle-front.gold {
-    background-image: url("surprise/assets/candles-gold-front.PNG");
+    background-image: url("../assets/candles-gold-front.PNG");
 }
 
 .candle-front.rainbow {
-    background-image: url("surprise/assets/candles-rainbow-front.PNG");
+    background-image: url("../assets/candles-rainbow-front.PNG");
 }
 
 #confetti-canvas {
