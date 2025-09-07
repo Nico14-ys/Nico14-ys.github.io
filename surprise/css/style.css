@@ -1,0 +1,270 @@
+body {
+    /* Smooth diagonal gradient */
+    /* background: linear-gradient(to bottom right, #024602, #033b7a); */
+
+    /* Pixelate it */
+    /* image-rendering: pixelated; */
+    /* Full viewport and centering */
+    /* background: url("../assets/bg.jpg") no-repeat center center; */
+    /* background-size: cover; */
+    /* scale to cover the whole screen */
+    /* image-rendering: pixelated; */
+    /* keeps it blocky */
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#pixel-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    /* stretch to screen */
+    height: 100vh;
+    z-index: -1;
+    image-rendering: pixelated;
+    /* makes stretching crisp */
+}
+
+
+
+#customize-screen {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.steps-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.step {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* vertical center */
+    align-items: center;
+    /* horizontal center */
+    transition: transform 0.8s ease, opacity 0.4s ease;
+}
+
+.step.active {
+    opacity: 1;
+}
+
+.step.exit-right {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.step.exit-left {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.nes-btn.custom {
+    color: #fff;
+    /* text color */
+    position: relative;
+    background: #8000ff;
+    border-color: #6600cc;
+    /* base fill */
+}
+
+.nes-btn.custom:hover {
+    color: #fff;
+    filter: brightness(0.9);
+}
+
+.hidden {
+    display: none;
+}
+
+.title h1 {
+    color: white;
+    transition: opacity 0.3s ease;
+    opacity: 1;
+}
+
+.title h1.fade-out {
+    opacity: 0;
+}
+
+
+.screen {
+    text-align: center;
+    margin: 20px;
+}
+
+.step {
+    margin: 20px;
+}
+
+.options button {
+    margin: 5px;
+}
+
+.cake-wrapper {
+    position: relative;
+    width: 500px;
+    height: 500px;
+}
+
+.plate {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-image: url("../assets/plate.png");
+}
+
+/* Base */
+.cake-base {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.cake-base.sponge {
+    background-image: url("../assets/cake-base-sponge.png");
+}
+
+.cake-base.chocolate {
+    background-image: url("../assets/cake-base-chocolate.png");
+}
+
+.cake-base.matcha {
+    background-image: url("../assets/cake-base-matcha.png");
+}
+
+.cake-base.mooncake {
+    background-image: url("../assets/cake-base-mooncake.png");
+}
+
+.cake-base.hamburger {
+    background-image: url("../assets/cake-base-hamburger.png");
+}
+
+/* Topping */
+.cake-topping {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.cake-topping.strawberries {
+    background-image: url("../assets/topping-strawberries.png");
+}
+
+.cake-topping.blueberries {
+    background-image: url("../assets/topping-blueberries.png");
+}
+
+.cake-topping.octopus {
+    background-image: url("../assets/topping-octopus.png");
+}
+
+.cake-topping.veggies-and-fruit {
+    background-image: url("../assets/topping-veggies-and-fruits.png");
+}
+
+
+.cake-topping.none {}
+
+.cake-topping-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.cake-topping-back.strawberries {
+    background-image: url("../assets/topping-back-strawberries.png");
+}
+
+
+
+/* … add 5 total */
+
+/* Candles */
+.candle-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.candle-front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Example candle states */
+.candle-back.blue {
+    background-image: url("../assets/candles-blue-back.png");
+}
+
+.candle-back.purple {
+    background-image: url("../assets/candles-purple-back.png");
+}
+
+.candle-back.gold {
+    background-image: url("../assets/candles-gold-back.png");
+}
+
+.candle-back.rainbow {
+    background-image: url("../assets/candles-rainbow-back.png");
+}
+
+.candle-front.blue {
+    background-image: url("../assets/candles-blue-front.png");
+}
+
+.candle-front.purple {
+    background-image: url("../assets/candles-purple-front.png");
+}
+
+.candle-front.gold {
+    background-image: url("../assets/candles-gold-front.png");
+}
+
+.candle-front.rainbow {
+    background-image: url("../assets/candles-rainbow-front.png");
+}
+
+#confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* don't block clicks */
+    z-index: 9999;
+}

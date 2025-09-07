@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Happy Birthday!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- NES.css from jsDelivr -->
+    <link href="https://cdn.jsdelivr.net/npm/nes.css/css/nes.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="surprise/css/style.css">
+
+</head>
+
+<body>
+    <canvas id="pixel-bg"></canvas>
+    <div id="title" class="title">
+        <h1>Happy Birthday!</h1>
+    </div>
+    <!-- Cake Display (shared across screens) -->
+    <div class="cake-wrapper">
+        <div class="plate" id="plate"></div>
+        <div class="cake-base sponge" id="cake-base"></div>
+        <div class="cake-topping-back strawberries" id="cake-topping-back"></div>
+        <div class="candle-back blue" id="candle-back"></div>
+        <div class="cake-topping strawberries" id="cake-topping"></div>
+        <div class="candle-front blue" id="candle-front"></div>
+    </div>
+
+    <!-- Main Menu -->
+    <div id="menu-screen" class="screen">
+        <button class="nes-btn is-success">Customize Cake</button>
+        <button id="customize-btn">Customize Cake</button>
+        <button id="blow-btn">Blow Candles</button>
+        <button class="nes-btn custom">Customize Cake</button>
+        <button class="nes-btn custom-purple">Blow Candles</button>
+        <button onclick="launchConfetti()">confetti</button>
+    </div>
+
+    <div id="customize-screen" class="screen hidden">
+        <div class="steps-wrapper">
+            <div class="step" id="step-1">
+                <h2>Choose Base</h2>
+                <div class="options">
+                    <button onclick="chooseBase('sponge')">Sponge</button>
+                    <button onclick="chooseBase('chocolate')">Chocolate</button>
+                    <button onclick="chooseBase('matcha')">Matcha</button>
+                    <button onclick="chooseBase('mooncake')">Mooncake</button>
+                    <button onclick="chooseBase('hamburger')">Hamburger</button>
+                </div>
+                <button id="next-1" disabled>Next ➡️</button>
+            </div>
+
+            <div class="step" id="step-2">
+                <h2>Choose Topping</h2>
+                <div class="options">
+                    <button onclick="chooseTopping('strawberries')">Strawberries</button>
+                    <button onclick="chooseTopping('blueberries')">Blueberries</button>
+                    <button onclick="chooseTopping('octopus')">Octopus</button>
+                    <button onclick="chooseTopping('veggies-and-fruit')">Veggies & Fruit</button>
+                    <button onclick="chooseTopping('none')">None</button>
+                </div>
+                <button id="back-2">⬅️ Back</button>
+                <button id="next-2" disabled>Next ➡️</button>
+            </div>
+
+            <div class="step" id="step-3">
+                <h2>Choose Candle</h2>
+                <div class="options">
+                    <button onclick="chooseCandle('blue')">Blue</button>
+                    <button onclick="chooseCandle('purple')">Purple</button>
+                    <button onclick="chooseCandle('gold')">Gold</button>
+                    <button onclick="chooseCandle('rainbow')">Rainbow</button>
+                </div>
+                <button id="back-3">⬅️ Back</button>
+                <button id="done" disabled>Done 🎉</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <canvas id="confetti-canvas"></canvas>
+
+
+    <script src="surprise/js/script.js"></script>
+</body>
