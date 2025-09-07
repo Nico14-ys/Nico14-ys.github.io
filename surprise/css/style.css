@@ -6,14 +6,14 @@ body {
     width: 100vw;
     height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
+    justify-content: flex-start;
+    /* stick to top */
+    align-items: center;
     overflow: hidden;
-    /* prevent scrolling */
-    font-family: 'Press Start 2P', cursive;
-    background: #000;
-    /* fallback background */
+    /* prevents scrolling */
+    padding-top: 20px;
+    /* optional spacing from top */
 }
 
 #pixel-bg {
@@ -123,11 +123,18 @@ body {
 --------------------------------*/
 .cake-wrapper {
     position: relative;
-    width: 50vmin;
-    /* scales with smaller viewport */
-    height: 50vmin;
+    width: 80vw;
+    /* scale with viewport width */
     max-width: 500px;
-    max-height: 500px;
+    /* never exceed original size */
+    height: auto;
+    /* maintain aspect ratio */
+}
+
+.cake-wrapper>div {
+    height: 0;
+    padding-bottom: 100%;
+    /* square aspect ratio */
 }
 
 .plate,
@@ -147,91 +154,91 @@ body {
    PLATE
 --------------------------------*/
 .plate {
-    background-image: url("/surprise/assets/plate.PNG");
+    background-image: url("/surprise/assets/plate.png");
 }
 
 /* -----------------------------
    CAKE BASES
 --------------------------------*/
 .cake-base.sponge {
-    background-image: url("/surprise/assets/cake-base-sponge.PNG");
+    background-image: url("/surprise/assets/cake-base-sponge.png");
 }
 
 .cake-base.chocolate {
-    background-image: url("/surprise/assets/cake-base-chocolate.PNG");
+    background-image: url("/surprise/assets/cake-base-chocolate.png");
 }
 
 .cake-base.matcha {
-    background-image: url("/surprise/assets/cake-base-matcha.PNG");
+    background-image: url("/surprise/assets/cake-base-matcha.png");
 }
 
 .cake-base.mooncake {
-    background-image: url("/surprise/assets/cake-base-mooncake.PNG");
+    background-image: url("/surprise/assets/cake-base-mooncake.png");
 }
 
 .cake-base.hamburger {
-    background-image: url("/surprise/assets/cake-base-hamburger.PNG");
+    background-image: url("/surprise/assets/cake-base-hamburger.png");
 }
 
 /* -----------------------------
    TOPPINGS
 --------------------------------*/
 .cake-topping.strawberries {
-    background-image: url("/surprise/assets/topping-strawberries.PNG");
+    background-image: url("/surprise/assets/topping-strawberries.png");
 }
 
 .cake-topping.blueberries {
-    background-image: url("/surprise/assets/topping-blueberries.PNG");
+    background-image: url("/surprise/assets/topping-blueberries.png");
 }
 
 .cake-topping.octopus {
-    background-image: url("/surprise/assets/topping-octopus.PNG");
+    background-image: url("/surprise/assets/topping-octopus.png");
 }
 
 .cake-topping.veggies-and-fruit {
-    background-image: url("/surprise/assets/topping-veggies-and-fruits.PNG");
+    background-image: url("/surprise/assets/topping-veggies-and-fruits.png");
 }
 
 .cake-topping.none {}
 
 /* Back toppings */
 .cake-topping-back.strawberries {
-    background-image: url("/surprise/assets/topping-back-strawberries.PNG");
+    background-image: url("/surprise/assets/topping-back-strawberries.png");
 }
 
 /* -----------------------------
    CANDLES
 --------------------------------*/
 .candle-back.blue {
-    background-image: url("/surprise/assets/candles-blue-back.PNG");
+    background-image: url("/surprise/assets/candles-blue-back.png");
 }
 
 .candle-back.purple {
-    background-image: url("/surprise/assets/candles-purple-back.PNG");
+    background-image: url("/surprise/assets/candles-purple-back.png");
 }
 
 .candle-back.gold {
-    background-image: url("/surprise/assets/candles-gold-back.PNG");
+    background-image: url("/surprise/assets/candles-gold-back.png");
 }
 
 .candle-back.rainbow {
-    background-image: url("/surprise/assets/candles-rainbow-back.PNG");
+    background-image: url("/surprise/assets/candles-rainbow-back.png");
 }
 
 .candle-front.blue {
-    background-image: url("/surprise/assets/candles-blue-front.PNG");
+    background-image: url("/surprise/assets/candles-blue-front.png");
 }
 
 .candle-front.purple {
-    background-image: url("/surprise/assets/candles-purple-front.PNG");
+    background-image: url("/surprise/assets/candles-purple-front.png");
 }
 
 .candle-front.gold {
-    background-image: url("/surprise/assets/candles-gold-front.PNG");
+    background-image: url("/surprise/assets/candles-gold-front.png");
 }
 
 .candle-front.rainbow {
-    background-image: url("/surprise/assets/candles-rainbow-front.PNG");
+    background-image: url("/surprise/assets/candles-rainbow-front.png");
 }
 
 /* -----------------------------
