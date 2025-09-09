@@ -269,6 +269,78 @@ h2 {
     background-image: url("../assets/candles-rainbow-front.png");
 }
 
+.candle-off {
+    position: absolute;
+    width: 100%;
+    /* size of one frame */
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.candle-normal {
+    position: absolute;
+    width: 100%;
+    /* size of one frame */
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.candle-normal.candle-8 {
+    background-image: url("../assets/flame-8/flame-8-normal.png");
+}
+
+.candle-lit {
+    position: absolute;
+    width: 100%;
+    /* size of one frame */
+    height: 100%;
+    background-size: 3200% 100%;
+    /* 32 frames horizontally */
+    animation: lit 3.2s steps(32) forwards;
+    /* ⬆ play once (32 frames at 10fps = 3.2s) */
+}
+
+@keyframes lit {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: -3200% 0;
+    }
+}
+
+.candle-lit.candle-8 {
+    background-image: url("../assets/flame-8/flame-8-lit.png");
+}
+
+.candle-blowout {
+    position: absolute;
+    width: 100%;
+    /* size of one frame */
+    height: 100%;
+    background-size: 3200% 100%;
+    /* 32 frames horizontally */
+    animation: blowout 3.2s steps(32) forwards;
+    /* ⬆ play once (32 frames at 10fps = 3.2s) */
+}
+
+@keyframes blowout {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: -3200% 0;
+    }
+}
+
+.candle-blowout.candle-8 {
+    background-image: url("../assets/flame-8/flame-8-blowout.png");
+}
+
 #confetti-canvas {
     position: fixed;
     top: 0;

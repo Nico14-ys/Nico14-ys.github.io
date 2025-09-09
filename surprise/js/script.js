@@ -21,7 +21,7 @@ const canvas = document.getElementById("pixel-bg");
 const ctx = canvas.getContext("2d");
 
 const img = new Image();
-img.src = "surprise/assets/bg.jpg"; // your background image
+img.src = "surprise/assets/bg2.jpg"; // your background image
 
 img.onload = () => {
     console.log("✅ Image loaded:", img.width, "x", img.height);
@@ -33,7 +33,7 @@ img.onerror = () => {
 
 
 function resizeCanvas() {
-    const scale = 8; // higher = chunkier pixels
+    const scale = 4; // higher = chunkier pixels
     const smallW = Math.floor(window.innerWidth / scale);
     const smallH = Math.floor(window.innerHeight / scale);
 
@@ -300,15 +300,52 @@ function detectBlow() {
 
 // --- Candles logic (basic placeholder) ---
 function tryBlowCandles() {
-    // example placeholder: implement your multi-candle logic here
-    console.log("tryBlowCandles called");
-    stopMic();
+    const candles = document.querySelectorAll(".candle");
+
+    candles.forEach((candle) => {
+        if (!candle.classList.contains("candle-normal")) return;
+
+        const isBlowout = Math.random() > 0.3;
+
+        if (isBlowout) {
+            candle.classList.remove("candle-normal");
+            candle.classList.add("candle-blowout");
+            console.log(candle.className, "blown out!");
+        } else {
+            candle.classList.remove("candle-normal");
+            candle.classList.add("candle-lit");
+            console.log(candle.className, "flickers but stays on!");
+        }
+
+        // attach animationend listener for both cases
+        candle.addEventListener(
+            "animationend",
+            function handler(e) {
+                if (e.animationName === "lit") {
+                    candle.classList.remove("candle-lit");
+                    candle.classList.add("candle-normal");
+                    console.log(candle.className, "back to normal flame.");
+                } else if (e.animationName === "blowout") {
+                    candle.classList.remove("candle-blowout");
+                    candle.classList.add("candle-off");
+                    console.log(candle.className, "off.");
+                }
+                candle.removeEventListener("animationend", handler);
+            }
+        );
+    });
 }
 
+
 function resetCandles() {
+    const candles = document.querySelectorAll(".candle"); // select all candles
+
     // placeholder
-    console.log("resetCandles called");
-    stopMic();
+    candles.forEach((candle) => {
+        candle.classList.remove("candle-lit", "candle-blowout");
+        candle.classList.add("candle-normal");
+
+    });
 }
 
 function launchConfetti() {
