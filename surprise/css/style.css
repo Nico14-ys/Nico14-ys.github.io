@@ -287,6 +287,34 @@ h2 {
     background-position: center;
 }
 
+.candle-normal.candle-1 {
+    background-image: url("../assets/flame-1/flame-1-normal.png");
+}
+
+.candle-normal.candle-2 {
+    background-image: url("../assets/flame-2/flame-2-normal.png");
+}
+
+.candle-normal.candle-3 {
+    background-image: url("../assets/flame-3/flame-3-normal.png");
+}
+
+.candle-normal.candle-4 {
+    background-image: url("../assets/flame-4/flame-4-normal.png");
+}
+
+.candle-normal.candle-5 {
+    background-image: url("../assets/flame-5/flame-5-normal.png");
+}
+
+.candle-normal.candle-6 {
+    background-image: url("../assets/flame-6/flame-6-normal.png");
+}
+
+.candle-normal.candle-7 {
+    background-image: url("../assets/flame-7/flame-7-normal.png");
+}
+
 .candle-normal.candle-8 {
     background-image: url("../assets/flame-8/flame-8-normal.png");
 }
@@ -312,6 +340,34 @@ h2 {
     }
 }
 
+.candle-lit.candle-1 {
+    background-image: url("../assets/flame-1/flame-1-lit.png");
+}
+
+.candle-lit.candle-2 {
+    background-image: url("../assets/flame-2/flame-2-lit.png");
+}
+
+.candle-lit.candle-3 {
+    background-image: url("../assets/flame-3/flame-3-lit.png");
+}
+
+.candle-lit.candle-4 {
+    background-image: url("../assets/flame-4/flame-4-lit.png");
+}
+
+.candle-lit.candle-5 {
+    background-image: url("../assets/flame-5/flame-5-lit.png");
+}
+
+.candle-lit.candle-6 {
+    background-image: url("../assets/flame-6/flame-6-lit.png");
+}
+
+.candle-lit.candle-7 {
+    background-image: url("../assets/flame-7/flame-7-lit.png");
+}
+
 .candle-lit.candle-8 {
     background-image: url("../assets/flame-8/flame-8-lit.png");
 }
@@ -335,6 +391,34 @@ h2 {
     to {
         background-position: -3200% 0;
     }
+}
+
+.candle-blowout.candle-1 {
+    background-image: url("../assets/flame-1/flame-1-blowout.png");
+}
+
+.candle-blowout.candle-2 {
+    background-image: url("../assets/flame-2/flame-2-blowout.png");
+}
+
+.candle-blowout.candle-3 {
+    background-image: url("../assets/flame-3/flame-3-blowout.png");
+}
+
+.candle-blowout.candle-4 {
+    background-image: url("../assets/flame-4/flame-4-blowout.png");
+}
+
+.candle-blowout.candle-5 {
+    background-image: url("../assets/flame-5/flame-5-blowout.png");
+}
+
+.candle-blowout.candle-6 {
+    background-image: url("../assets/flame-6/flame-6-blowout.png");
+}
+
+.candle-blowout.candle-7 {
+    background-image: url("../assets/flame-7/flame-7-blowout.png");
 }
 
 .candle-blowout.candle-8 {
