@@ -372,11 +372,12 @@ function launchConfetti() {
 
     // spawn function
     function addParticles(count) {
+        size = window.innerHeight * 0.004
         for (let i = 0; i < count; i++) {
             particles.push({
                 x: Math.random() * canvas.width,
                 y: -10,
-                size: 4 + Math.floor(Math.random() * 5),
+                size: size + Math.floor(Math.random() * size),
                 color: colors[Math.floor(Math.random() * colors.length)],
                 speedY: 2 + Math.random() * 3,
                 speedX: 1 + (Math.random() - 0.5) * 2
