@@ -269,7 +269,7 @@ h2 {
     background-image: url("../assets/candles-rainbow-front.png");
 }
 
-.candle-off {
+.flame-off {
     position: absolute;
     width: 100%;
     /* size of one frame */
@@ -278,7 +278,7 @@ h2 {
     background-position: center;
 }
 
-.candle-normal {
+.flame-normal {
     position: absolute;
     width: 100%;
     /* size of one frame */
@@ -287,142 +287,130 @@ h2 {
     background-position: center;
 }
 
-.candle-normal.candle-1 {
+.flame-normal.flame-1 {
     background-image: url("../assets/flame-1/flame-1-normal.png");
 }
 
-.candle-normal.candle-2 {
+.flame-normal.flame-2 {
     background-image: url("../assets/flame-2/flame-2-normal.png");
 }
 
-.candle-normal.candle-3 {
+.flame-normal.flame-3 {
     background-image: url("../assets/flame-3/flame-3-normal.png");
 }
 
-.candle-normal.candle-4 {
+.flame-normal.flame-4 {
     background-image: url("../assets/flame-4/flame-4-normal.png");
 }
 
-.candle-normal.candle-5 {
+.flame-normal.flame-5 {
     background-image: url("../assets/flame-5/flame-5-normal.png");
 }
 
-.candle-normal.candle-6 {
+.flame-normal.flame-6 {
     background-image: url("../assets/flame-6/flame-6-normal.png");
 }
 
-.candle-normal.candle-7 {
+.flame-normal.flame-7 {
     background-image: url("../assets/flame-7/flame-7-normal.png");
 }
 
-.candle-normal.candle-8 {
+.flame-normal.flame-8 {
     background-image: url("../assets/flame-8/flame-8-normal.png");
 }
 
-.candle-lit {
+.flame-lit {
     position: absolute;
     width: 100%;
     /* size of one frame */
     height: 100%;
-    background-size: 3200% 100%;
-    /* 32 frames horizontally */
-    animation: lit 3.2s steps(32) forwards;
-    /* ⬆ play once (32 frames at 10fps = 3.2s) */
 }
 
-@keyframes lit {
-    from {
-        background-position: 0 0;
-    }
-
-    to {
-        background-position: -3200% 0;
-    }
+.flame-lit.flame-1 {
+    background-image: url("../assets/flame-1/flame-1-lit.gif");
+    background-size: cover;
 }
 
-.candle-lit.candle-1 {
-    background-image: url("../assets/flame-1/flame-1-lit.png");
+.flame-lit.flame-2 {
+    background-image: url("../assets/flame-2/flame-2-lit.gif");
+    background-size: cover;
 }
 
-.candle-lit.candle-2 {
-    background-image: url("../assets/flame-2/flame-2-lit.png");
+.flame-lit.flame-3 {
+    background-image: url("../assets/flame-3/flame-3-lit.gif");
+    background-size: cover;
 }
 
-.candle-lit.candle-3 {
-    background-image: url("../assets/flame-3/flame-3-lit.png");
+.flame-lit.flame-4 {
+    background-image: url("../assets/flame-4/flame-4-lit.gif");
+    background-size: cover;
 }
 
-.candle-lit.candle-4 {
-    background-image: url("../assets/flame-4/flame-4-lit.png");
+.flame-lit.flame-5 {
+    background-image: url("../assets/flame-5/flame-5-lit.gif");
+    background-size: cover;
 }
 
-.candle-lit.candle-5 {
-    background-image: url("../assets/flame-5/flame-5-lit.png");
+.flame-lit.flame-6 {
+    background-image: url("../assets/flame-6/flame-6-lit.gif");
+    background-size: cover;
 }
 
-.candle-lit.candle-6 {
-    background-image: url("../assets/flame-6/flame-6-lit.png");
+.flame-lit.flame-7 {
+    background-image: url("../assets/flame-7/flame-7-lit.gif");
+    background-size: cover;
 }
 
-.candle-lit.candle-7 {
-    background-image: url("../assets/flame-7/flame-7-lit.png");
+.flame-lit.flame-8 {
+    background-image: url("../assets/flame-8/flame-8-lit.gif");
+    background-size: cover;
 }
 
-.candle-lit.candle-8 {
-    background-image: url("../assets/flame-8/flame-8-lit.png");
-}
-
-.candle-blowout {
+.flame-blowout {
     position: absolute;
     width: 100%;
     /* size of one frame */
     height: 100%;
-    background-size: 3200% 100%;
-    /* 32 frames horizontally */
-    animation: blowout 3.2s steps(32) forwards;
-    /* ⬆ play once (32 frames at 10fps = 3.2s) */
 }
 
-@keyframes blowout {
-    from {
-        background-position: 0 0;
-    }
-
-    to {
-        background-position: -3200% 0;
-    }
+.flame-blowout.flame-1 {
+    background-image: url("../assets/flame-1/flame-1-blowout.gif");
+    background-size: cover;
 }
 
-.candle-blowout.candle-1 {
-    background-image: url("../assets/flame-1/flame-1-blowout.png");
+.flame-blowout.flame-2 {
+    background-image: url("../assets/flame-2/flame-2-blowout.gif");
+    background-size: cover;
 }
 
-.candle-blowout.candle-2 {
-    background-image: url("../assets/flame-2/flame-2-blowout.png");
+.flame-blowout.flame-3 {
+    background-image: url("../assets/flame-3/flame-3-blowout.gif");
+    background-size: cover;
 }
 
-.candle-blowout.candle-3 {
-    background-image: url("../assets/flame-3/flame-3-blowout.png");
+.flame-blowout.flame-4 {
+    background-image: url("../assets/flame-4/flame-4-blowout.gif");
+    background-size: cover;
 }
 
-.candle-blowout.candle-4 {
-    background-image: url("../assets/flame-4/flame-4-blowout.png");
+.flame-blowout.flame-5 {
+    background-image: url("../assets/flame-5/flame-5-blowout.gif");
+    background-size: cover;
 }
 
-.candle-blowout.candle-5 {
-    background-image: url("../assets/flame-5/flame-5-blowout.png");
+.flame-blowout.flame-6 {
+    background-image: url("../assets/flame-6/flame-6-blowout.gif");
+    background-size: cover;
 }
 
-.candle-blowout.candle-6 {
-    background-image: url("../assets/flame-6/flame-6-blowout.png");
+.flame-blowout.flame-7 {
+    background-image: url("../assets/flame-7/flame-7-blowout.gif");
+    background-size: cover;
 }
 
-.candle-blowout.candle-7 {
-    background-image: url("../assets/flame-7/flame-7-blowout.png");
-}
-
-.candle-blowout.candle-8 {
-    background-image: url("../assets/flame-8/flame-8-blowout.png");
+.flame-blowout.flame-8 {
+    background-image: url("../assets/flame-8/flame-8-blowout.gif");
+    background-size: cover;
 }
 
 #confetti-canvas {

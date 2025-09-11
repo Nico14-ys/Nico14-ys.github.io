@@ -298,53 +298,64 @@ function detectBlow() {
     requestAnimationFrame(detectBlow);
 }
 
-// --- Candles logic (basic placeholder) ---
+// --- Candles logic with GIF reset ---
 function tryBlowCandles() {
-    const candles = document.querySelectorAll(".candle");
+    const candles = document.querySelectorAll(".flame");
+    const ts = Date.now();
 
     candles.forEach((candle) => {
-        if (!candle.classList.contains("candle-normal")) return;
+        if (!candle.classList.contains("flame-normal")) return;
 
-        const isBlowout = Math.random() > 0.3;
+        const id = candle.id;
+        if (!id) return;
 
-        if (isBlowout) {
-            candle.classList.remove("candle-normal");
-            candle.classList.add("candle-blowout");
-            console.log(candle.className, "blown out!");
-        } else {
-            candle.classList.remove("candle-normal");
-            candle.classList.add("candle-lit");
-            console.log(candle.className, "flickers but stays on!");
+        const isBlowout = Math.random() > 0.3; // 70% blowout chance
+
+        // Helper: set GIF with cache-busting query param
+        function setGif(className, filename) {
+            candle.classList.remove("flame-normal", "flame-lit", "flame-blowout", "flame-off");
+            candle.classList.add(className, id);
+            const url = `surprise/assets/${id}/${filename}`;
+            candle.style.backgroundImage = `url('${url}')`;
         }
 
-        // attach animationend listener for both cases
-        candle.addEventListener(
-            "animationend",
-            function handler(e) {
-                if (e.animationName === "lit") {
-                    candle.classList.remove("candle-lit");
-                    candle.classList.add("candle-normal");
-                    console.log(candle.className, "back to normal flame.");
-                } else if (e.animationName === "blowout") {
-                    candle.classList.remove("candle-blowout");
-                    candle.classList.add("candle-off");
-                    console.log(candle.className, "off.");
-                }
-                candle.removeEventListener("animationend", handler);
-            }
-        );
+        if (isBlowout) {
+            setGif("flame-blowout", `${id}-blowout.gif?${ts}")`);
+            console.log(candle.className, "blown out!");
+
+            // after blowout finishes, switch to off
+            setTimeout(() => {
+                candle.classList.remove("flame-blowout");
+                candle.classList.add("flame-off");
+                console.log(candle.className, "off.");
+            }, 3200);
+        } else {
+            setGif("flame-lit", `${id}-lit.gif?${ts}")`);
+            console.log(candle.className, "flickers but stays on!");
+
+            // after flicker, back to normal
+            setTimeout(() => {
+                candle.classList.remove("flame-lit");
+                candle.classList.add("flame-normal");
+                candle.style.backgroundImage = `url('surprise/assets/${id}/${id}-normal.png')`;
+                console.log(candle.className, "back to normal flame.");
+            }, 3200);
+        }
     });
 }
 
 
+
 function resetCandles() {
-    const candles = document.querySelectorAll(".candle"); // select all candles
+    const candles = document.querySelectorAll(".flame"); // select all candles
 
     // placeholder
     candles.forEach((candle) => {
-        candle.classList.remove("candle-lit", "candle-blowout");
-        candle.classList.add("candle-normal");
-
+        const id = candle.id;
+        if (!id) return;
+        candle.classList.remove("flame-lit", "flame-blowout");
+        candle.classList.add("flame-normal");
+        candle.style.backgroundImage = `url('surprise/assets/${id}/${id}-normal.png')`;
     });
 }
 
