@@ -37,14 +37,14 @@
 
     <!-- Main Menu -->
     <div id="menu-screen" class="screen">
-        <button id="customize-btn" class="nes-btn custom">Customize Cake</button>
+        <button id="customise-btn" class="nes-btn custom">Customize Cake</button>
         <button id="blow-btn" class="nes-btn custom">Blow Candles</button>
         <button onclick="launchConfetti()">confetti</button>
-        <button onclick="tryBlowCandles()">blow</button>
+        <!-- <button onclick="tryBlowCandles()">blow</button> -->
         <button onclick="resetCandles()">reset</button>
     </div>
 
-    <div id="customize-screen" class="screen hidden">
+    <div id="customise-screen" class="screen hidden">
         <div class="steps-wrapper">
             <div class="step" id="step-1">
                 <h2>Choose Base</h2>
@@ -80,13 +80,19 @@
                     <button onclick="chooseCandle('rainbow')">Rainbow</button>
                 </div>
                 <button id="back-3">⬅️ Back</button>
-                <button id="done" disabled>Done 🎉</button>
+                <button id="customise-done" disabled>Done 🎉</button>
             </div>
         </div>
     </div>
 
-
-
+    <div id="blow-candle-screen" class="screen hidden">
+        <div id="candle-text" class="candle-text">
+            <h2>Try blowing the candles!</h2>
+        </div>
+        <button onclick="tryBlowCandles()">Blow</button>
+        <button onclick="resetCandles()">Again!</button>
+        <button id="blow-done">I'm done!</button>
+    </div>
 
     <canvas id="confetti-canvas"></canvas>
 

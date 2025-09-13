@@ -4,6 +4,7 @@
 let audioContext, analyser, dataArray, mic, stream;
 let listening = false;
 let currentStep = 1;
+let candlesLeft = 8;
 
 let selections = {
     base: null,
@@ -13,8 +14,8 @@ let selections = {
 
 // --- Cached DOM elements ---
 let cakeBaseEl, cakeToppingEl, cakeToppingBackEl, candleBackEl, candleFrontEl;
-let next1Btn, next2Btn, doneBtn;
-let customizeBtn, blowBtn, resetBtn;
+let next1Btn, next2Btn, customiseDoneBtn;
+let customiseBtn, blowBtn, resetBtn;
 let back2Btn, back3Btn;
 
 const canvas = document.getElementById("pixel-bg");
@@ -82,15 +83,16 @@ function setupDOM() {
     // Cache navigation buttons (may be missing in some builds)
     next1Btn = document.getElementById("next-1");
     next2Btn = document.getElementById("next-2");
-    doneBtn = document.getElementById("done");
+    customiseDoneBtn = document.getElementById("customise-done");
 
     back2Btn = document.getElementById("back-2");
     back3Btn = document.getElementById("back-3");
 
     // Cache menu buttons (reset might not exist in your HTML)
-    customizeBtn = document.getElementById("customize-btn");
+    customiseBtn = document.getElementById("customise-btn");
     blowBtn = document.getElementById("blow-btn");
     resetBtn = document.getElementById("reset"); // optional
+    blowDoneBtn = document.getElementById("blow-done"); // optional
 
     const step1 = document.getElementById("step-1");
     const step2 = document.getElementById("step-2");
@@ -103,28 +105,29 @@ function setupDOM() {
     attachEvents();
 
     console.log("setupDOM finished. Elements found:",
-        { cakeBaseEl: !!cakeBaseEl, cakeToppingEl: !!cakeToppingEl, next1Btn: !!next1Btn, customizeBtn: !!customizeBtn, resetBtn: !!resetBtn });
+        { cakeBaseEl: !!cakeBaseEl, cakeToppingEl: !!cakeToppingEl, next1Btn: !!next1Btn, customiseBtn: !!customiseBtn, resetBtn: !!resetBtn });
 }
 
 // --- Attach button events (defensive) ---
 function attachEvents() {
-    if (customizeBtn) {
-        customizeBtn.addEventListener("click", () => {
+    if (customiseBtn) {
+        customiseBtn.addEventListener("click", () => {
             resetSelections();
-            showScreens(["customize-screen"]); // show customize screen
-            setHappyBirthdayText("Customise your cake!");
+            showScreens(["customise-screen"]); // show customise screen
+            setFadingText(".title h1", "Customise your cake!");
             const step1 = document.getElementById("step-1");
             currentStep = 1;
         });
 
     } else {
-        console.warn("customizeBtn not found");
+        console.warn("customiseBtn not found");
     }
 
     if (blowBtn) {
         blowBtn.addEventListener("click", () => {
-            // Later: start blow game UI
-            alert("Blow candles game coming soon!");
+            candlesLeft = 8;
+            setFadingText(".candle-text h2", "Try blowing the candles!")
+            showScreens(["blow-candle-screen"]); // show customise screen
         });
     }
 
@@ -143,28 +146,58 @@ function attachEvents() {
     if (back3Btn) back3Btn.onclick = () => showStep(2, "back");
 
 
+    const doneButtons = [
+        document.getElementById("customise-done"),            // customise screen
+        document.getElementById("blow-done"),            // customise screen
+    ];
 
-    if (doneBtn) doneBtn.addEventListener("click", () => {
-        showScreens(["menu-screen"]);
-        // Example usage
-        setHappyBirthdayText("Happy Birthday!");
-        launchConfetti();
+    doneButtons.forEach(btn => {
+        if (!btn) return;
+
+        btn.addEventListener("click", () => {
+            // Show main menu
+            showScreens(["menu-screen"]);
+
+            // Reset flames
+            resetCandles();
+
+            // Reset title text
+            setFadingText(".title h1", "Happy Birthday!");
+
+            // Launch confetti
+            launchConfetti();
+        });
     });
 
 }
 
-function setHappyBirthdayText(newText) {
-    const h1 = document.querySelector(".title h1");
 
-    // Fade out
-    h1.classList.add("fade-out");
+function setFadingText(selector, newText) {
+    const el = document.querySelector(selector);
+    if (!el) return;
 
-    // Wait for transition to finish, then change text and fade in
-    h1.addEventListener("transitionend", function handler() {
-        h1.textContent = newText;
-        h1.classList.remove("fade-out");
-        h1.removeEventListener("transitionend", handler);
-    });
+    el.classList.add("fade-out");
+
+    let transitioned = false;
+
+    function handler(e) {
+        if (e.propertyName === "opacity") {
+            transitioned = true;
+            el.textContent = newText;
+            el.classList.remove("fade-out");
+            el.removeEventListener("transitionend", handler);
+        }
+    }
+
+    el.addEventListener("transitionend", handler);
+
+    // fallback if transition never fires
+    setTimeout(() => {
+        if (!transitioned) {
+            el.textContent = newText;
+            el.classList.remove("fade-out");
+        }
+    }, 350); // match your CSS duration
 }
 
 
@@ -179,9 +212,17 @@ function resetSelections() {
     if (candleBackEl) candleBackEl.className = "candle-back";
     if (candleFrontEl) candleFrontEl.className = "candle-front";
 
+    const flames = document.querySelectorAll(".flame"); // select all candles
+
+    flames.forEach((flame) => {
+        const id = flame.id;
+        if (!id) return;
+        flame.classList.add("hidden");
+    });
+
     if (next1Btn) next1Btn.disabled = true;
     if (next2Btn) next2Btn.disabled = true;
-    if (doneBtn) doneBtn.disabled = true;
+    if (customiseDoneBtn) customiseDoneBtn.disabled = true;
 }
 
 // --- Choice functions (keep these global so inline onclick attributes still work) ---
@@ -202,7 +243,7 @@ function chooseCandle(color) {
     selections.candle = color;
     if (candleBackEl) candleBackEl.className = "candle-back " + color;
     if (candleFrontEl) candleFrontEl.className = "candle-front " + color;
-    if (doneBtn) doneBtn.disabled = false;
+    if (customiseDoneBtn) customiseDoneBtn.disabled = false;
 }
 
 // --- Screen helpers ---
@@ -212,7 +253,7 @@ function showScreens(ids) {
     // Show only the ones in ids[]
     ids.forEach(id => {
         const el = document.getElementById(id);
-        if (el) el.classList.remove("hidden");
+        el.classList.remove("hidden");
     });
 }
 
@@ -300,62 +341,75 @@ function detectBlow() {
 
 // --- Candles logic with GIF reset ---
 function tryBlowCandles() {
-    const candles = document.querySelectorAll(".flame");
+    const flames = document.querySelectorAll(".flame");
     const ts = Date.now();
 
-    candles.forEach((candle) => {
-        if (!candle.classList.contains("flame-normal")) return;
+    flames.forEach((flame) => {
+        if (!flame.classList.contains("flame-normal")) return;
 
-        const id = candle.id;
+        const id = flame.id;
         if (!id) return;
 
         const isBlowout = Math.random() > 0.3; // 70% blowout chance
 
         // Helper: set GIF with cache-busting query param
         function setGif(className, filename) {
-            candle.classList.remove("flame-normal", "flame-lit", "flame-blowout", "flame-off");
-            candle.classList.add(className, id);
+            flame.classList.remove("flame-normal", "flame-lit", "flame-blowout", "flame-off");
+            flame.classList.add(className, id);
             const url = `surprise/assets/${id}/${filename}`;
-            candle.style.backgroundImage = `url('${url}')`;
+            flame.style.backgroundImage = `url('${url}')`;
         }
 
         if (isBlowout) {
+            candlesLeft -= 1
             setGif("flame-blowout", `${id}-blowout.gif?${ts}")`);
-            console.log(candle.className, "blown out!");
+            console.log(flame.className, "blown out!");
 
             // after blowout finishes, switch to off
             setTimeout(() => {
-                candle.classList.remove("flame-blowout");
-                candle.classList.add("flame-off");
-                console.log(candle.className, "off.");
+                flame.classList.remove("flame-blowout");
+                flame.classList.add("flame-off");
+                console.log(flame.className, "off.");
             }, 3200);
         } else {
             setGif("flame-lit", `${id}-lit.gif?${ts}")`);
-            console.log(candle.className, "flickers but stays on!");
+            console.log(flame.className, "flickers but stays on!");
 
             // after flicker, back to normal
             setTimeout(() => {
-                candle.classList.remove("flame-lit");
-                candle.classList.add("flame-normal");
-                candle.style.backgroundImage = `url('surprise/assets/${id}/${id}-normal.png')`;
-                console.log(candle.className, "back to normal flame.");
+                flame.classList.remove("flame-lit");
+                flame.classList.add("flame-normal");
+                flame.style.backgroundImage = `url('surprise/assets/${id}/${id}-normal.png')`;
+                console.log(flame.className, "back to normal flame.");
             }, 3200);
         }
+        setTimeout(() => {
+            if (candlesLeft != 0) {
+                setFadingText(".candle-text h2", `${candlesLeft} more to go!`);
+                console.log(`Set candle-text ${candlesLeft} more to go!`);
+            }
+            else {
+                setFadingText(".candle-text h2", `Yay hey!`);
+            }
+        }, 3000); // match your CSS duration
+
+
     });
 }
 
 
 
 function resetCandles() {
-    const candles = document.querySelectorAll(".flame"); // select all candles
+    candlesLeft = 8;
+    const flames = document.querySelectorAll(".flame"); // select all candles
 
     // placeholder
-    candles.forEach((candle) => {
-        const id = candle.id;
+    flames.forEach((flame) => {
+        const id = flame.id;
         if (!id) return;
-        candle.classList.remove("flame-lit", "flame-blowout");
-        candle.classList.add("flame-normal");
-        candle.style.backgroundImage = `url('surprise/assets/${id}/${id}-normal.png')`;
+        flame.classList.remove("flame-lit", "flame-blowout", "flame-off", "hidden");
+        flame.classList.add("flame-normal");
+        flame.style.backgroundImage = `url('surprise/assets/${id}/${id}-normal.png')`;
     });
 }
 
@@ -365,25 +419,34 @@ function launchConfetti() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    const colors = ["#ff0", "#f0f", "#0ff", "#0f0", "#f00", "#00f", "#ffa500"];
+    const colors = ["rgba(255, 213, 0, 1)", "rgba(228, 136, 228, 1)", "rgba(162, 255, 255, 1)", "rgba(177, 255, 87, 1)", "rgba(255, 54, 54, 1)", "rgba(41, 41, 255, 1)", "#ffa600ff"];
     const particles = [];
 
     let generating = true;
 
     // spawn function
     function addParticles(count) {
-        size = window.innerHeight * 0.004
+        const sizeBase = window.innerHeight * 0.006;
+
         for (let i = 0; i < count; i++) {
+            const x = Math.random() * canvas.width; // start anywhere on top
+            const y = -10;
+            const center = canvas.width / 2;
+
+            // drift toward center
+            const dir = x < center ? 1 : -1;
+
             particles.push({
-                x: Math.random() * canvas.width,
-                y: -10,
-                size: size + Math.floor(Math.random() * size),
+                x,
+                y,
+                size: sizeBase + Math.random() * sizeBase,
                 color: colors[Math.floor(Math.random() * colors.length)],
-                speedY: 2 + Math.random() * 3,
-                speedX: 1 + (Math.random() - 0.5) * 2
+                speedY: 2 + Math.random() * 3,              // fall down
+                speedX: dir * (0.5 + Math.random() * 1.5)  // inward drift
             });
         }
     }
+
 
     // start with a batch
     addParticles(20);
@@ -423,7 +486,7 @@ function launchConfetti() {
     // stop generating new ones after 3s
     setTimeout(() => {
         generating = false;
-    }, 3000);
+    }, 4000);
 }
 
 

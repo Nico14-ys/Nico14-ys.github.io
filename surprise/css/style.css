@@ -8,8 +8,6 @@ body {
     align-items: center;
     /* horizontally center */
     justify-content: flex-start;
-    /* stick to top */
-    font-size: 2.5 vh;
 }
 
 
@@ -27,7 +25,7 @@ body {
 
 
 
-#menu-screen #customize-screen {
+#menu-screen #customise-screen {
     position: relative;
     width: 100vh;
     height: 30vh;
@@ -101,20 +99,35 @@ body {
     align-items: center;
 }
 
+.candle-text {
+    height: 10vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* vertical center */
+    align-items: center;
+}
+
 .title h1 {
-    text-align: center;
     font-size: 3vh;
+}
+
+.candle-text h2 {
+    font-size: 2vh;
+}
+
+.title h1,
+.candle-text h2 {
+    text-align: center;
     color: white;
-    transition: opacity 0.3s ease;
     opacity: 1;
+    transition: opacity 0.3s ease;
 }
 
-.title h1.fade-out {
+.title h1.fade-out,
+.candle-text h2.fade-out {
     opacity: 0;
-}
-
-h2 {
-    font-size: 2.5 vh;
 }
 
 
