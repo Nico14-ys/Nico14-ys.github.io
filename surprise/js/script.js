@@ -13,6 +13,7 @@ let selections = {
 };
 
 // --- Cached DOM elements ---
+let letterIcon, overlay, letterPopup, closePopup;
 let cakeBaseEl, cakeToppingEl, cakeToppingBackEl, candleBackEl, candleFrontEl;
 let next1Btn, next2Btn, customiseDoneBtn;
 let customiseBtn, blowBtn, resetBtn;
@@ -73,6 +74,11 @@ window.addEventListener("resize", resizeCanvas);
 
 // --- Setup ---
 function setupDOM() {
+    letterIcon = document.getElementById("letter-icon");
+    overlay = document.getElementById("overlay");
+    letterPopup = document.getElementById("letter-popup");
+    closePopup = document.getElementById("close-popup");
+
     // Cache cake layers
     cakeBaseEl = document.getElementById("cake-base");
     cakeToppingEl = document.getElementById("cake-topping");
@@ -110,6 +116,29 @@ function setupDOM() {
 
 // --- Attach button events (defensive) ---
 function attachEvents() {
+    if (letterIcon && overlay && letterPopup && closePopup) {
+        letterIcon.addEventListener("click", () => {
+            overlay.classList.add("active");
+            letterPopup.classList.add("active");
+            overlay.classList.remove("hidden");
+            letterPopup.classList.remove("hidden");
+        });
+
+        function hidePopup() {
+            overlay.classList.remove("active");
+            letterPopup.classList.remove("active");
+            setTimeout(() => {
+                overlay.classList.add("hidden");
+                letterPopup.classList.add("hidden");
+            }, 400); // match transition
+        }
+
+        overlay.addEventListener("click", hidePopup);
+        closePopup.addEventListener("click", hidePopup);
+    }
+
+
+
     if (customiseBtn) {
         customiseBtn.addEventListener("click", () => {
             resetSelections();

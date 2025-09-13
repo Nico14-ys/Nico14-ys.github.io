@@ -14,6 +14,18 @@
 
 <body>
     <canvas id="pixel-bg"></canvas>
+
+    <div class="icon-container">
+        <div id="video-icon" class="corner-icon left">
+            <div id="video-icon" class="video"> </div>
+            <div id="video-dot-icon" class="video-dot not-played"> </div>
+        </div>
+        <div id="letter-icon" class="corner-icon right">
+            <div id="letter-icon" class="corner-icon letter closed"></div>
+            <div id="letter-dot-icon" class="corner-icon letter-dot not-opened"></div>
+        </div>
+    </div>
+
     <div id="title" class="title">
         <h1>Happy Birthday!</h1>
     </div>
@@ -95,6 +107,20 @@
     </div>
 
     <canvas id="confetti-canvas"></canvas>
+
+    <!-- Overlay + Popup -->
+    <div id="overlay" class="overlay hidden"></div>
+    <div id="letter-popup" class="popup hidden">
+        <div class="popup-content">
+            <button id="close-popup" class="close-btn nes-btn is-error">X</button>
+            <h2>A Birthday Letter 💌</h2>
+            <p>
+                Dear Friend,<br>
+                Wishing you the sweetest birthday ever! 🎂✨<br>
+                Hope all your wishes come true!
+            </p>
+        </div>
+    </div>
 
 
     <script src="surprise/js/script.js"></script>
