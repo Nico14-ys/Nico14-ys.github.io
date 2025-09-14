@@ -1,0 +1,737 @@
+/* -------------------------------------------- */
+/*  Base                                        */
+/* -------------------------------------------- */
+
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url("../assets/bg.png");
+    background-size: cover;
+    background-position: center;
+}
+
+/* Font for chinese */
+@font-face {
+    font-family: 'Zpix';
+    src: url('zpix.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.hidden {
+    display: none;
+}
+
+
+
+
+
+/* -------------------------------------------- */
+/*  Texts                                       */
+/* -------------------------------------------- */
+
+.title {
+    height: 10vh;
+    margin: 10vh 3vh 0vh 3vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title h1 {
+    font-size: 2.5vh;
+    text-shadow: 0 0 2vh rgba(0, 0, 0, 0.503);
+}
+
+.candle-text {
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.candle-text h2 {
+    font-size: 2vh;
+    text-shadow: 0 0 2vh rgb(0, 0, 0);
+}
+
+.title h1,
+.candle-text h2 {
+    text-align: center;
+    color: white;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.title h1.fade-out,
+.candle-text h2.fade-out {
+    opacity: 0;
+}
+
+.step h2 {
+    font-size: 2vh;
+    text-shadow: 0 0 2vh rgb(0, 0, 0);
+    text-align: center;
+    color: white;
+}
+
+
+
+
+
+/* -------------------------------------------- */
+/*  Buttons                                     */
+/* -------------------------------------------- */
+
+.nes-btn {
+    border-image-repeat: repeat;
+}
+
+.nes-btn.main-menu {
+    color: #ffffff;
+    padding: 0.5vh 0.5vh;
+    position: relative;
+    background: #99ceb1;
+    font-size: 1.8vh;
+    margin: 1.5vh;
+    border-image-source: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='5' height='5'><path d='M2 1 h1 v1 h-1 z M1 2 h1 v1 h-1 z M3 2 h1 v1 h-1 z M2 3 h1 v1 h-1 z' fill='%23517060'/></svg>");
+}
+
+.nes-btn.customise::after {
+    box-shadow: inset -4px -4px #eab5ac;
+}
+
+.nes-btn.customise {
+    color: #ffffff;
+    padding: 0.5vh 0.5vh;
+    position: relative;
+    background: #eb8e7d;
+    font-size: 1.5vh;
+    margin: 1.2vh 1vh;
+    border-image-source: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='5' height='5'><path d='M2 1 h1 v1 h-1 z M1 2 h1 v1 h-1 z M3 2 h1 v1 h-1 z M2 3 h1 v1 h-1 z' fill='%23985043'/></svg>");
+}
+
+.nes-btn.customise-navigation::after {
+    box-shadow: inset -4px -4px #f1cf99;
+}
+
+.nes-btn.customise-navigation {
+    color: #ffffff;
+    padding: 0.5vh 0.5vh;
+    position: relative;
+    background: #ecb55d;
+    font-size: 1.5vh;
+    margin: 1.2vh;
+    border-image-source: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='5' height='5'><path d='M2 1 h1 v1 h-1 z M1 2 h1 v1 h-1 z M3 2 h1 v1 h-1 z M2 3 h1 v1 h-1 z' fill='%23997a4a'/></svg>");
+}
+
+.nes-btn.blow::after {
+    box-shadow: inset -4px -4px #9bc3e9;
+}
+
+.nes-btn.blow {
+    color: #ffffff;
+    padding: 0.5vh 0.5vh;
+    position: relative;
+    background: #71a3d2;
+    font-size: 1.8vh;
+    margin: 1.5vh;
+    border-image-source: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='5' height='5'><path d='M2 1 h1 v1 h-1 z M1 2 h1 v1 h-1 z M3 2 h1 v1 h-1 z M2 3 h1 v1 h-1 z' fill='%23446585'/></svg>");
+}
+
+.nes-btn:disabled {
+    background: #a4aea8;
+    border-image-source: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='5' height='5'><path d='M2 1 h1 v1 h-1 z M1 2 h1 v1 h-1 z M3 2 h1 v1 h-1 z M2 3 h1 v1 h-1 z' fill='%2379807c'/></svg>");
+    opacity: 0.5;
+}
+
+.nes-btn.customise-navigation:disabled::after {
+    box-shadow: inset -4px -4px #dbdddc;
+}
+
+.nes-btn.main-menu::after {
+    box-shadow: inset -4px -4px #c6dbd0;
+}
+
+
+.nes-btn:hover {
+    color: #fff;
+    filter: brightness(0.9);
+}
+
+
+
+
+
+/* -------------------------------------------- */
+/*  Corner icon (video & letter)                */
+/* -------------------------------------------- */
+
+.corner-icon {
+    position: fixed;
+    width: 5vh;
+    height: 5vh;
+    cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC) 14 0, pointer;
+}
+
+.corner-icon.left {
+    left: 1.5vh;
+    top: 2vh;
+}
+
+.video,
+.letter {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
+
+.video {
+    background-image: url("../assets/video.png");
+}
+
+.video-dot {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
+
+.video-dot.not-played {
+    background-image: url("../assets/video-dot-not-played.png");
+}
+
+.video-dot.played {
+    background-image: url("../assets/video-dot-played.png");
+}
+
+.corner-icon.right {
+    top: 2vh;
+    right: 1.5vh;
+}
+
+.letter {
+    background-image: url("../assets/letter-opening.png");
+}
+
+.letter.closed {
+    top: -1vh;
+    background-image: url("../assets/letter-closed.png");
+}
+
+.letter-dot {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
+
+.letter-dot.not-opened {
+    top: -1vh;
+    background-image: url("../assets/letter-dot-not-opened.png");
+}
+
+
+
+
+/* -------------------------------------------- */
+/*  Screens                                     */
+/* -------------------------------------------- */
+
+.screen {
+    text-align: center;
+    margin: 3vh;
+    margin: 0 auto;
+}
+
+#menu-screen,
+#customise-screen {
+    position: relative;
+    height: 20vh;
+    margin: 0 auto;
+    overflow-x: hidden;
+}
+
+@media (max-width: 600px) {
+
+    #menu-screen,
+    #customise-screen {
+        height: 40vh;
+    }
+
+    #menu-screen button {
+        display: block;
+        margin: 3vh auto;
+    }
+}
+
+
+
+
+/* -------------------------------------------- */
+/*  Customisation steps                         */
+/* -------------------------------------------- */
+
+.step {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    display: flex;
+    pointer-events: none;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.8s ease, opacity 0.4s ease;
+}
+
+.step.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.step.exit-right {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.step.exit-left {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+
+
+
+
+/* -------------------------------------------- */
+/*  Cake                                        */
+/* -------------------------------------------- */
+
+.cake-wrapper {
+    position: relative;
+    margin: 0 auto;
+    width: 60vh;
+    height: 60vh;
+}
+
+@media (max-width: 600px) {
+
+    .cake-wrapper {
+        width: 40vh;
+        height: 40vh;
+    }
+}
+
+/* Plate */
+.plate {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-image: url("../assets/plate.png");
+}
+
+/* Base */
+.cake-base {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.cake-base.sponge {
+    background-image: url("../assets/cake-base-sponge.png");
+}
+
+.cake-base.chocolate {
+    background-image: url("../assets/cake-base-chocolate.png");
+}
+
+.cake-base.matcha {
+    background-image: url("../assets/cake-base-matcha.png");
+}
+
+.cake-base.mooncake {
+    background-image: url("../assets/cake-base-mooncake.png");
+}
+
+.cake-base.hamburger {
+    background-image: url("../assets/cake-base-hamburger.png");
+}
+
+/* Topping */
+.cake-topping {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.cake-topping.strawberries {
+    background-image: url("../assets/topping-strawberries.png");
+}
+
+.cake-topping.blueberries {
+    background-image: url("../assets/topping-blueberries.png");
+}
+
+.cake-topping.octopus {
+    background-image: url("../assets/topping-octopus.png");
+}
+
+.cake-topping.veggies-and-fruit {
+    background-image: url("../assets/topping-veggies-and-fruits.png");
+}
+
+.cake-topping-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.cake-topping-back.strawberries {
+    background-image: url("../assets/topping-back-strawberries.png");
+}
+
+/* Candles */
+.candle-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.candle-back.blue {
+    background-image: url("../assets/candles-blue-back.png");
+}
+
+.candle-back.purple {
+    background-image: url("../assets/candles-purple-back.png");
+}
+
+.candle-back.gold {
+    background-image: url("../assets/candles-gold-back.png");
+}
+
+.candle-back.rainbow {
+    background-image: url("../assets/candles-rainbow-back.png");
+}
+
+.candle-front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.candle-front.blue {
+    background-image: url("../assets/candles-blue-front.png");
+}
+
+.candle-front.purple {
+    background-image: url("../assets/candles-purple-front.png");
+}
+
+.candle-front.gold {
+    background-image: url("../assets/candles-gold-front.png");
+}
+
+.candle-front.rainbow {
+    background-image: url("../assets/candles-rainbow-front.png");
+}
+
+/* Flames */
+.flame {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.flame-off {
+    opacity: 0;
+}
+
+/* Normal stationary */
+.flame-normal.flame-1 {
+    background-image: url("../assets/flame-1/flame-1-normal.png");
+}
+
+.flame-normal.flame-2 {
+    background-image: url("../assets/flame-2/flame-2-normal.png");
+}
+
+.flame-normal.flame-3 {
+    background-image: url("../assets/flame-3/flame-3-normal.png");
+}
+
+.flame-normal.flame-4 {
+    background-image: url("../assets/flame-4/flame-4-normal.png");
+}
+
+.flame-normal.flame-5 {
+    background-image: url("../assets/flame-5/flame-5-normal.png");
+}
+
+.flame-normal.flame-6 {
+    background-image: url("../assets/flame-6/flame-6-normal.png");
+}
+
+.flame-normal.flame-7 {
+    background-image: url("../assets/flame-7/flame-7-normal.png");
+}
+
+.flame-normal.flame-8 {
+    background-image: url("../assets/flame-8/flame-8-normal.png");
+}
+
+/* Lit flame GIF*/
+.flame-lit.flame-1 {
+    background-image: url("../assets/flame-1/flame-1-lit.gif");
+    background-size: cover;
+}
+
+.flame-lit.flame-2 {
+    background-image: url("../assets/flame-2/flame-2-lit.gif");
+    background-size: cover;
+}
+
+.flame-lit.flame-3 {
+    background-image: url("../assets/flame-3/flame-3-lit.gif");
+    background-size: cover;
+}
+
+.flame-lit.flame-4 {
+    background-image: url("../assets/flame-4/flame-4-lit.gif");
+    background-size: cover;
+}
+
+.flame-lit.flame-5 {
+    background-image: url("../assets/flame-5/flame-5-lit.gif");
+    background-size: cover;
+}
+
+.flame-lit.flame-6 {
+    background-image: url("../assets/flame-6/flame-6-lit.gif");
+    background-size: cover;
+}
+
+.flame-lit.flame-7 {
+    background-image: url("../assets/flame-7/flame-7-lit.gif");
+    background-size: cover;
+}
+
+.flame-lit.flame-8 {
+    background-image: url("../assets/flame-8/flame-8-lit.gif");
+    background-size: cover;
+}
+
+/* Blowout flame GIF*/
+.flame-blowout.flame-1 {
+    background-image: url("../assets/flame-1/flame-1-blowout.gif");
+    background-size: cover;
+}
+
+.flame-blowout.flame-2 {
+    background-image: url("../assets/flame-2/flame-2-blowout.gif");
+    background-size: cover;
+}
+
+.flame-blowout.flame-3 {
+    background-image: url("../assets/flame-3/flame-3-blowout.gif");
+    background-size: cover;
+}
+
+.flame-blowout.flame-4 {
+    background-image: url("../assets/flame-4/flame-4-blowout.gif");
+    background-size: cover;
+}
+
+.flame-blowout.flame-5 {
+    background-image: url("../assets/flame-5/flame-5-blowout.gif");
+    background-size: cover;
+}
+
+.flame-blowout.flame-6 {
+    background-image: url("../assets/flame-6/flame-6-blowout.gif");
+    background-size: cover;
+}
+
+.flame-blowout.flame-7 {
+    background-image: url("../assets/flame-7/flame-7-blowout.gif");
+    background-size: cover;
+}
+
+.flame-blowout.flame-8 {
+    background-image: url("../assets/flame-8/flame-8-blowout.gif");
+    background-size: cover;
+}
+
+
+
+
+
+/* -------------------------------------------- */
+/*  Confetti                                    */
+/* -------------------------------------------- */
+
+#confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+
+
+
+
+/* -------------------------------------------- */
+/*  Letter & video common overlay               */
+/* -------------------------------------------- */
+
+/* Overlay (dim background) */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1500;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+
+
+
+/* -------------------------------------------- */
+/*  Letter                                      */
+/* -------------------------------------------- */
+
+/* Letter popup */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+    width: min(calc(80vh * 1000 / 1330), calc(100vw - 6vh));
+    height: calc((min(calc(80vh * 1000 / 1330), calc(100vw - 6vh))) * 1330 / 1000);
+    pointer-events: none;
+    background: url("../assets/letter.png") no-repeat center/contain;
+    border-radius: 12px;
+    z-index: 2001;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3vh;
+}
+
+/* Letter popup active transformation (fades + scales in) */
+.popup.active {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
+}
+
+/* Letter popup content */
+.popup-content {
+    font-family: 'Zpix', sans-serif;
+    color: #333;
+    text-align: left;
+    line-height: 1.5;
+    font-size: 2vh;
+
+}
+
+/* Close button for letter */
+.close-btn {
+    position: absolute;
+    top: 3vh;
+    right: 3vh;
+    transform: translate(50%, -50%);
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1vh;
+    padding: 0.3vh 0.6vh;
+    z-index: 2002;
+}
+
+/* -------------------------------------------- */
+/*  Video                                       */
+/* -------------------------------------------- */
+
+.popup-video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+    pointer-events: none;
+    width: calc(100vw - 6vh);
+    max-width: 80vh;
+    height: auto;
+    border-radius: 12px;
+    background: #000;
+    z-index: 2001;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Video active transformation (fades + scales in) */
+.popup-video.active {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
+}
+
+@media (max-width: 600px) {
+    #popup-video {
+        width: calc(100vw - 2vh);
+    }
+}
+
+/* Close button for video */
+.close-video {
+    position: absolute;
+    top: 3vh;
+    right: 3vh;
+    transform: translate(50%, -50%);
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1vh;
+    padding: 0.3vh 0.6vh;
+    z-index: 2002;
+}

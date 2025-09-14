@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+    <title>Happy Birthday!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/nes.css/css/nes.min.css" rel="stylesheet" />
+    <link href="surprise/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Corner icons: video and letter -->
+    <div class="icon-container">
+        <div id="video-icon" class="corner-icon left">
+            <div id="video" class="video"> </div>
+            <div id="video-dot-icon" class="video-dot not-played"> </div>
+        </div>
+        <div id="letter-icon" class="corner-icon right">
+            <div id="letter" class="corner-icon letter closed"></div>
+            <div id="letter-dot-icon" class="corner-icon letter-dot not-opened"></div>
+        </div>
+    </div>
+
+    <!-- Title -->
+    <div id="title" class="title">
+        <h1>Happy Birthday!</h1>
+    </div>
+
+    <!-- Cake -->
+    <div class="cake-wrapper">
+        <div class="plate" id="plate"></div>
+        <div class="cake-base sponge" id="cake-base"></div>
+        <div class="cake-topping-back strawberries" id="cake-topping-back"></div>
+        <div class="candle-back blue" id="candle-back"></div>
+        <div class="flame flame-8 flame-normal" id="flame-8"></div>
+        <div class="flame flame-7 flame-normal" id="flame-7"></div>
+        <div class="flame flame-6 flame-normal" id="flame-6"></div>
+        <div class="flame flame-5 flame-normal" id="flame-5"></div>
+        <div class="cake-topping strawberries" id="cake-topping"></div>
+        <div class="flame flame-4 flame-normal" id="flame-4"></div>
+        <div class="flame flame-3 flame-normal" id="flame-3"></div>
+        <div class="flame flame-2 flame-normal" id="flame-2"></div>
+        <div class="flame flame-1 flame-normal" id="flame-1"></div>
+        <div class="candle-front blue" id="candle-front"></div>
+    </div>
+
+    <!-- Main menu -->
+    <div id="menu-screen" class="screen">
+        <button id="customise-btn" class="nes-btn main-menu">Build a Cake</button>
+        <button id="blow-btn" class="nes-btn main-menu">Make a Wish</button>
+        <button class="nes-btn main-menu" onclick="launchConfetti()">Party Time!</button>
+    </div>
+
+    <!-- Cake customisation -->
+    <div id="customise-screen" class="screen hidden">
+
+        <!-- Step 1 -->
+        <div class="step" id="step-1">
+            <h2>Step 1: Choose Base</h2>
+            <div class="options">
+                <button class="nes-btn customise" onclick="chooseBase('sponge')">Sponge</button>
+                <button class="nes-btn customise" onclick="chooseBase('chocolate')">Chocolate</button>
+                <button class="nes-btn customise" onclick="chooseBase('matcha')">Matcha</button>
+                <button class="nes-btn customise" onclick="chooseBase('mooncake')">Mooncake</button>
+                <button class="nes-btn customise" onclick="chooseBase('hamburger')">Hamburger</button>
+            </div>
+            <div class="options">
+                <button class="nes-btn customise-navigation" id="next-1" disabled>Next ></button>
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step" id="step-2">
+            <h2>Step 2: Choose Topping</h2>
+            <div class="options">
+                <button class="nes-btn customise" onclick="chooseTopping('strawberries')">Strawberries</button>
+                <button class="nes-btn customise" onclick="chooseTopping('blueberries')">Blueberries</button>
+                <button class="nes-btn customise" onclick="chooseTopping('octopus')">Octopus</button>
+                <button class="nes-btn customise" onclick="chooseTopping('veggies-and-fruit')">Veggies & Fruit</button>
+            </div>
+            <div class="options">
+
+                <button class="nes-btn customise-navigation" id="back-2">
+                    < Back</button>
+                        <button class="nes-btn customise" onclick="chooseTopping('none')">None</button>
+                        <button class="nes-btn customise-navigation" id="next-2" disabled>Next ></button>
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step" id="step-3">
+            <h2>Step 3: Choose Candle</h2>
+            <div class="options">
+                <button class="nes-btn customise" onclick="chooseCandle('blue')">Blue</button>
+                <button class="nes-btn customise" onclick="chooseCandle('purple')">Purple</button>
+                <button class="nes-btn customise" onclick="chooseCandle('gold')">Gold</button>
+                <button class="nes-btn customise" onclick="chooseCandle('rainbow')">Rainbow</button>
+            </div>
+            <div class="options">
+                <button class="nes-btn customise-navigation" id="back-3">
+                    < Back</button>
+                        <button class="nes-btn customise-navigation" id="customise-done" disabled>Done ></button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Blow candle screen -->
+    <div id="blow-candle-screen" class="screen hidden">
+        <div id="candle-text" class="candle-text">
+            <h2>Try blow into the microphone!</h2>
+        </div>
+        <button class="nes-btn blow" id="blow-again" onclick="resetCandles()">Again!</button>
+        <button class="nes-btn blow" id="blow-done">I'm done!</button>
+    </div>
+
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- Overlay (dim screen for letter popup) -->
+    <div id="overlay" class="overlay hidden"></div>
+
+    <!-- Letter popup -->
+    <div id="letter-popup" class="popup hidden">
+        <button id="close-popup" class="close-btn nes-btn is-error">X</button>
+        <div class="popup-content">
+            <p>
+                親愛的爹地,<br><br>
+                生日快樂!
+                沒曾想到竟是placement期間才有時間與精力準備禮物。我享受了過程，望你能從成品中尋得一絲驚喜。有興趣的話，可以看看我寫的code、畫的assets，又或嘗試break the website
+                （應該非常容易哈哈，但我也很努力debug了嗚嗚)。時間不多，借助了好朋友ChatGPT的大力支持，但我也很驕傲能將想法化爲現實。謝謝你讓我踏往這個方向，不知前路如何，但至少現在的我，非常享受。請記得，你是很好的爸爸，祝你身體健康，順心如意。<br><br>
+                愛你的女兒<br>
+                琛
+
+            </p>
+        </div>
+    </div>
+
+    <!-- Video popup -->
+    <button id="close-video" class="close-video nes-btn is-error hidden">X</button>
+    <video id="popup-video" class="popup-video hidden" controls playsinline webkit-playsinline>
+        <source src="surprise/assets/happy-birthday.mp4" type="video/mp4">
+    </video>
+
+    <script src="surprise/js/script.js"></script>
+</body>
